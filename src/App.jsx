@@ -1,14 +1,12 @@
-import logo from './logo.svg';
 import './App.css';
-import { Fragment, useEffect, useState } from 'react';
-import { flushSync } from 'react-dom';
+import { Fragment, useCallback, useEffect, useState } from 'react';
 
 function App() {
   let [cells,setCells]=useState(['','','','','','','','',''])
   let [trun,setTrun]=useState('circle')
   let [winner,setWinner]=useState('');
   const message=`It is now ${trun}'s trun to play`
-  const checkWinner=()=>{
+  const checkWinner=useCallback(()=>{
     const winningCombs=[[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6],]
     winningCombs.forEach(winArr=>{
       let circleWin=winArr.every(cell=>cells[cell]==='o')
@@ -22,8 +20,8 @@ function App() {
         console.log(winner)
       }
     })
-  }
-  useEffect(()=>{checkWinner()},[cells])
+  },[cells,winner])
+  useEffect(()=>{checkWinner()},[checkWinner])
   const handelClick=(e,i)=>{
     const fill=e.target.firstChild.classList.contains('x')||e.target.firstChild.classList.contains('o');
     if(!fill){
@@ -41,7 +39,7 @@ function App() {
   }
   const handleChange=(id,className)=>{
    const setCell= cells.map((cell,i)=>{
-      if(i==id){
+      if(i===id){
         return className
       }
       else{
