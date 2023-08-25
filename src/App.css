@@ -1,38 +1,62 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+body{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: poppins,sans-serif;
+  background: #000;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  height: 100vh;
 }
-
-.App-link {
-  color: #61dafb;
+.App{
+  display: flex;
+  justify-content: center;
+  align-items:center;
+  column-gap: 15px;
+  flex-wrap: wrap;
+  width: 400px;
+  height: 400px;
+  margin-top: 25px;
+  padding-top: 10px;
+  margin-bottom: 0;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.box{
+  width: 100px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #ff0000;
+  border: 5px solid white;
+}
+.o{
+  width: 90%;
+  height: 90%;
+  border: 20px solid blueviolet;
+  box-sizing: border-box;
+  border-radius: 50%;
+}
+.x{
+  width: 90%;
+  height: 90%;
+  position: relative;
+  transform: rotate(45deg);
+}
+.x::after,.x::before{
+  content: '';
+  position: absolute;
+  background: yellow;
+}
+.x::after{
+  left: 55%;
+  width: 20%;
+  margin-left: -15%;
+  height: 100%;
+}
+.x::before{
+  top:55%;
+  height: 20%;
+  margin-top: -15%;
+  width: 100%;
 }
